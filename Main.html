@@ -10,54 +10,83 @@
   <script src="https://www.gstatic.com/charts/loader.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-  <style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <style>  
     body{
       height: 100vh;
       margin: 0;
       padding: 0;
-      background-color: cornflowerblue;
+      background-color: rgb(255, 255, 255);
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-    }
-    .container{
-      margin: 0;
+    }  
+    .Chart{
+      height: 210px; 
       padding: 0;
-      background-color: aqua;
-      justify-content: space-around;
-      width: 100%;
-      object-fit: cover;
+      background-color: rgb(255, 255, 255);
+    }
+    #carouselExampleIndicators > button.carousel-control-next{
+      width: 5%;
+    }
+    #carouselExampleIndicators > button.carousel-control-prev{
+      width: 5%;
     }
   </style>
 </head>
 
 <body>
-  <div class="col-12 container">
-    <div id="carouselExampleIndicators" class="col-12 carousel carousel-dark slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active container parent">
-          <div id="id_PieChart_01"></div>
+  <div class="container-fluid" style="padding: 0; align-items: center; justify-content: center;">
+    <div id="carouselExampleIndicators" style="height: 210px; padding: 0;" class="col-12 carousel slide">
+      <div class="carousel-inner" style="height: 210px; padding: 0; align-items: center;">
+        <div class="carousel-item active ">
+          <div class="container-fluid parent" >
+            <div class="row text-center" style="background-color: rgb(255, 255, 255);">
+              <div class="col-7 themed-grid-col Chart" id="id_PieChart_01"></div>
+              <div class="col-5 themed-grid-col" id="id_C3_StatusCard" style="align-items: center;" >
+                <div class="col">
+                  <div class="card mb-4 rounded-1 shadow-sm border-primary">
+                    <div class="card-header py-1 text-bg-primary border-primary">
+                      <h4 class="my-0 fw-normal">Tint/Dalmec</h4>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-danger-subtle border border-success-subtle rounded-pill" style="background-color: darkgreen;">
+                        <img class="rounded-circle me-3" width="30" height="30" src="https://github.com/mdo.png" alt="" >Normal
+                      </span>
+                      <span class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">
+                        <img class="rounded-circle me-3" width="30" height="30" src="https://github.com/mdo.png" alt="">Auto
+                      </span>
+                      <span class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-warning-subtle border border-success-subtle rounded-pill">
+                        <img class="rounded-circle me-3" width="30" height="30" src="https://github.com/mdo.png" alt="">Runing
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_02"></div>
+          <div class="Chart" id="id_PieChart_02" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_03"></div>
+          <div class="Chart" id="id_PieChart_03" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_04"></div>
+          <div class="Chart" id="id_PieChart_04" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_05"></div>
+          <div class="Chart" id="id_PieChart_05" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_LineChart_01" ></div>
+          <div class="Chart" id="id_LineChart_01" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_ColumnChart_01"></div>
+          <div class="Chart" id="id_ColumnChart_01"></div>
         </div>
         <div class="carousel-item">
-          <div id="id_ColumnChart_02"></div>
+          <div class="Chart" id="id_ColumnChart_02"></div>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -94,42 +123,114 @@
     // CV103
     const options_PieChart_01 = {
       title: 'CV103-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      legend: { position: 'bottom'},
+      //legend: 'none',
+      //pieSliceText: 'label', // Show label (combined string)
+      //tooltip: { isHtml: true },
+      chartArea: {
+        //left: 20,
+        //top: 20,
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };
     // CV104
     const options_PieChart_02 = {
       title: 'CV104-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      legend: { position: 'bottom'},
+      chartArea: {
+        left: 20,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };
     // CV105
     const options_PieChart_03 = {
       title: 'CV105-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      legend: { position: 'bottom'},
+      chartArea: {
+        left: 20,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };    
     // CV106
     const options_PieChart_04 = {
       title: 'CV106-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      legend: { position: 'bottom'},
+      chartArea: {
+        left: 20,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };
     // CV107
     const options_PieChart_05 = {
       title: 'CV107-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      legend: { position: 'bottom'},
+      chartArea: {
+        left: 20,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
-      //pieHole: 0.4
     };
     // Line Chart   
     const options_LineChart_01 = {
       title: 'Pail Per Min',
       curveType: 'function',
-      legend: { position: 'bottom', maxLines: 2 },
+      legend: { position: 'bottom', maxLines: 2},
       vAxis: {
         viewWindow: {
           min: 0
         }
+      },
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 30,
+        top: 20,
+        width: '96%',
+        height: '70%'
       }
     }; 
     // Column Chart               
@@ -153,6 +254,17 @@
           bold: true,
           color: '#000',
         },
+      },
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 30,
+        top: 20,
+        width: '96%',
+        height: '70%'
       }
     };  
     // Option
@@ -160,7 +272,7 @@
       //isStacked: true,
       title: 'Total Time (Hour)',
       //annotations: true,
-      bar: {groupWidth: "65%"},
+      bar: {groupWidth: "60%"},
       legend: { position: "bottom", maxLines: 2 },
       vAxis: {
         title: 'Total'
@@ -173,6 +285,17 @@
           bold: true,
           color: '#000',
         },
+      },
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 30,
+        top: 20,
+        width: '96%',
+        height: '70%'
       }
   };  
     // Initialize the Line Chart
@@ -402,8 +525,8 @@
   // CV103
   function update_PieChart_01(Run, Sleep) {
     data_PieChart_01.setValue(0, 1, Run); // 
-    data_PieChart_01.setValue(1, 1, Run); // 
-    //var Error = 24-(Run+Sleep);
+    data_PieChart_01.setValue(1, 1, Sleep); // 
+    var Error = 24-(Run+Sleep);
     data_PieChart_01.setValue(2, 1, Error); // 
     chart_PieChart_01.draw(data_PieChart_01, options_PieChart_01); // Redraw the chart with updated data
   }
@@ -506,6 +629,7 @@
     <!--------------------------------- GET DATA FROM ERA ---------------------------->   
     <script>
       const eraWidget = new EraWidget();
+      eraWidget.requestAdjustMobileHeight(100);
       // Khai báo các tag sử dụng    
       let C3_nFb_PailType   = null,
           C4_nFb_PailType   = null,
@@ -619,11 +743,11 @@
         // Update the chart with new values
         onValues: (values) => {
           // Update the chart with new values
-          update_PieChart_01( values[C3_nFb_Total_TimeRun.id].value, values[C3_nFb_Total_TimeSleep.id]);
-          //update_PieChart_02( values[C4_nFb_Total_TimeRun.id].value, values[C4_nFb_Total_TimeSleep.id]);
-          //update_PieChart_03( values[C5_nFb_Total_TimeRun.id].value, values[C5_nFb_Total_TimeSleep.id]);
-          //update_PieChart_04( values[C6_nFb_Total_TimeRun.id].value, values[C6_nFb_Total_TimeSleep.id]);
-          //update_PieChart_05( values[C7_nFb_Total_TimeRun.id].value, values[C7_nFb_Total_TimeSleep.id]);
+          update_PieChart_01( values[C3_nFb_Total_TimeRun.id].value, values[C3_nFb_Total_TimeSleep.id].value);
+          update_PieChart_02( values[C4_nFb_Total_TimeRun.id].value, values[C4_nFb_Total_TimeSleep.id].value);
+          update_PieChart_03( values[C5_nFb_Total_TimeRun.id].value, values[C5_nFb_Total_TimeSleep.id].value);
+          update_PieChart_04( values[C6_nFb_Total_TimeRun.id].value, values[C6_nFb_Total_TimeSleep.id].value);
+          update_PieChart_05( values[C7_nFb_Total_TimeRun.id].value, values[C7_nFb_Total_TimeSleep.id].value);
           // Pail Rate
           appendData_LineChart_01(  values[C3_nFb_PailRate.id].value,
                                     values[C4_nFb_PailRate.id].value, 
