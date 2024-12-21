@@ -34,24 +34,21 @@
 <body>
   <div class="col-12 container">
     <div id="carouselExampleIndicators" class="col-12 carousel carousel-dark slide">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-          aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-          aria-label="Slide 5"></button>  
-      </div>
       <div class="carousel-inner">
         <div class="carousel-item active container parent">
           <div id="id_PieChart_01"></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_02"></div>
+          <div id="id_PieChart_02" ></div>
+        </div>
+        <div class="carousel-item">
+          <div id="id_PieChart_03" ></div>
+        </div>
+        <div class="carousel-item">
+          <div id="id_PieChart_04" ></div>
+        </div>
+        <div class="carousel-item">
+          <div id="id_PieChart_05" ></div>
         </div>
         <div class="carousel-item">
           <div id="id_LineChart_01" ></div>
@@ -87,19 +84,40 @@
     google.charts.setOnLoadCallback(drawInitialChart);
     // Define data and chart globally
     let data_PieChart_01,chart_PieChart_01,
-        data_PieChart_02,chart_PieChart_02;
+        data_PieChart_02,chart_PieChart_02,
+        data_PieChart_03,chart_PieChart_03,
+        data_PieChart_04,chart_PieChart_04,
+        data_PieChart_05,chart_PieChart_05;
     let data_LineChart_01  , chart_LineChart_01   ,view_LineChart_01; 
     let data_ColumnChart_01, chart_ColumnChart_01 ,view_ColumnChart_01;
     let data_ColumnChart_02, chart_ColumnChart_02 ,view_ColumnChart_02;
-    // Style setting
+    // CV103
     const options_PieChart_01 = {
-      title: 'CV103-Daily Product',
+      title: 'CV103-Total Time (Hour)',
       is3D: true
       //pieHole: 0.4
     };
-    // Style setting
+    // CV104
     const options_PieChart_02 = {
-      title: 'CV103-Daily Product',
+      title: 'CV104-Total Time (Hour)',
+      is3D: true
+      //pieHole: 0.4
+    };
+    // CV105
+    const options_PieChart_03 = {
+      title: 'CV105-Total Time (Hour)',
+      is3D: true
+      //pieHole: 0.4
+    };    
+    // CV106
+    const options_PieChart_04 = {
+      title: 'CV106-Total Time (Hour)',
+      is3D: true
+      //pieHole: 0.4
+    };
+    // CV107
+    const options_PieChart_05 = {
+      title: 'CV107-Total Time (Hour)',
       is3D: true
       //pieHole: 0.4
     };
@@ -123,7 +141,11 @@
       vAxis: {
         title: 'Total'
       },
-      vAxis: { minValue: 0 },
+      vAxis: { 
+        viewWindow: {
+          min: 0
+        }
+       },
       annotations: {
         alwaysOutside: true, // Show totals above bars
         textStyle: {
@@ -137,7 +159,7 @@
     const options_ColumnChart_02 = {
       //isStacked: true,
       title: 'Total Time (Hour)',
-      annotations: true,
+      //annotations: true,
       bar: {groupWidth: "65%"},
       legend: { position: "bottom", maxLines: 2 },
       vAxis: {
@@ -157,6 +179,9 @@
     function drawInitialChart() {
       chart_PieChart_01     = new google.visualization.PieChart(document.getElementById('id_PieChart_01'));
       chart_PieChart_02     = new google.visualization.PieChart(document.getElementById('id_PieChart_02'));
+      chart_PieChart_03     = new google.visualization.PieChart(document.getElementById('id_PieChart_03'));
+      chart_PieChart_04     = new google.visualization.PieChart(document.getElementById('id_PieChart_04'));
+      chart_PieChart_05     = new google.visualization.PieChart(document.getElementById('id_PieChart_05'));
       chart_LineChart_01    = new google.visualization.LineChart(document.getElementById('id_LineChart_01'));
       chart_ColumnChart_01  = new google.visualization.ColumnChart(document.getElementById("id_ColumnChart_01"));
       chart_ColumnChart_02  = new google.visualization.ColumnChart(document.getElementById("id_ColumnChart_02"));
@@ -168,6 +193,12 @@
           draw_PieChart_01();
         } else if (event.relatedTarget.querySelector('#id_PieChart_02')) {
           draw_PieChart_02();
+        } else if (event.relatedTarget.querySelector('#id_PieChart_03')) {
+          draw_PieChart_03();
+        } else if (event.relatedTarget.querySelector('#id_PieChart_04')) {
+          draw_PieChart_04();
+        } else if (event.relatedTarget.querySelector('#id_PieChart_05')) {
+          draw_PieChart_05();
         } else if (event.relatedTarget.querySelector('#id_LineChart_01')) {
           draw_LineChart_01();
         } else if (event.relatedTarget.querySelector('#id_ColumnChart_01')) {
@@ -179,30 +210,64 @@
       window.addEventListener('resize', () => {
         draw_PieChart_01();
         draw_PieChart_02();
+        draw_PieChart_03();
+        draw_PieChart_04();
+        draw_PieChart_05();
         draw_LineChart_01();
         draw_ColumnChart_01();
         draw_ColumnChart_02();
       });
     }
     /*-----------------------------Pie Chart Initialization (Unchanged)-----------------------------*/
+    // CV103
     function draw_PieChart_01(){
       data_PieChart_01 = google.visualization.arrayToDataTable([
-        ['Task', 'Value'],
-        ['Temperature', 25],
-        ['Humidity', 31],
-        ['Power', 15]
+        ['Time' , 'Value'],
+        ['Run'  , 25],
+        ['Sleep', 31],
+        ['Error', 15]
       ]);
       chart_PieChart_01.draw(data_PieChart_01, options_PieChart_01);  
     }
-
+    // CV104
     function draw_PieChart_02(){
       data_PieChart_02 = google.visualization.arrayToDataTable([
-        ['Task', 'Value'],
-        ['Temperature', 15],
-        ['Humidity', 25],
-        ['Power', 40]
+        ['Time' , 'Value'],
+        ['Run'  , 25],
+        ['Sleep', 31],
+        ['Error', 15]
       ]);
       chart_PieChart_02.draw(data_PieChart_02, options_PieChart_02);
+    }  
+    // CV105
+    function draw_PieChart_03(){
+      data_PieChart_03 = google.visualization.arrayToDataTable([
+        ['Time' , 'Value'],
+        ['Run'  , 25],
+        ['Sleep', 31],
+        ['Error', 15]
+      ]);
+      chart_PieChart_03.draw(data_PieChart_03, options_PieChart_03);
+    }  
+    // CV106
+    function draw_PieChart_04(){
+      data_PieChart_04 = google.visualization.arrayToDataTable([
+        ['Time' , 'Value'],
+        ['Run'  , 25],
+        ['Sleep', 31],
+        ['Error', 15]
+      ]);
+      chart_PieChart_04.draw(data_PieChart_04, options_PieChart_04);
+    }  
+    // CV107
+    function draw_PieChart_05(){
+      data_PieChart_05 = google.visualization.arrayToDataTable([
+        ['Time' , 'Value'],
+        ['Run'  , 25],
+        ['Sleep', 31],
+        ['Error', 15]
+      ]);
+      chart_PieChart_05.draw(data_PieChart_05, options_PieChart_05);
     }  
     /*-----------------------------Line Chart Initialization-----------------------------*/
     function draw_LineChart_01(){
@@ -297,7 +362,7 @@
       chart_ColumnChart_01.draw(view_ColumnChart_01, options_ColumnChart_01);
     }      
     /*-----------------------------Column Chart 02------------------------------------*/
-    function draw_ClumnChart_02() {
+    function draw_ColumnChart_02() {
       data_ColumnChart_02 = google.visualization.arrayToDataTable([
         ['Station','Run', 'Sleep', 'Error',{ role: 'annotation' }],
         ['CV103', 5, 8, 6, ''],
@@ -305,8 +370,12 @@
         ['CV105', 5, 8, 6, ''],
         ['CV106', 5, 8, 6, ''],
         ['CV107', 5, 8, 6, '']
-        
       ]);
+      // Calculate totals for annotations
+      for (let i = 0; i < data_ColumnChart_02.getNumberOfRows(); i++) {
+        const total = data_ColumnChart_02.getValue(i, 1) + data_ColumnChart_02.getValue(i, 2) + data_ColumnChart_02.getValue(i, 3);
+        data_ColumnChart_02.setValue(i, 4, total.toString()); // Set total as annotation
+      }
       // View Data
       view_ColumnChart_02 = new google.visualization.DataView(data_ColumnChart_02);
       view_ColumnChart_02.setColumns([0, 1, {
@@ -329,6 +398,47 @@
       // draw
       chart_ColumnChart_02.draw(view_ColumnChart_02, options_ColumnChart_02);
     }
+/*-----------------------------FUNCTION- Update Pie Chart -01------------------------------------*/
+  // CV103
+  function update_PieChart_01(Run, Sleep) {
+    data_PieChart_01.setValue(0, 1, Run); // 
+    data_PieChart_01.setValue(1, 1, Sleep); // 
+    var Error = 24-(Run+Sleep);
+    data_PieChart_01.setValue(2, 1, Error); // 
+    chart_PieChart_01.draw(data_PieChart_01, options_PieChart_01); // Redraw the chart with updated data
+  }
+  // CV104
+  function update_PieChart_02(Run, Sleep) {
+    data_PieChart_02.setValue(0, 1, Run); // 
+    data_PieChart_02.setValue(1, 1, Sleep); // 
+    var Error = 24-(Run+Sleep);
+    data_PieChart_02.setValue(2, 1, Error); // 
+    chart_PieChart_02.draw(data_PieChart_02, options_PieChart_02); // Redraw the chart with updated data
+  }
+  // CV105
+  function update_PieChart_03(Run, Sleep) {
+  data_PieChart_03.setValue(0, 1, Run); // 
+  data_PieChart_03.setValue(1, 1, Sleep); // 
+  var Error = 24-(Run+Sleep);
+  data_PieChart_03.setValue(2, 1, Error); // 
+  chart_PieChart_03.draw(data_PieChart_03, options_PieChart_03); // Redraw the chart with updated data
+  }
+  // CV106
+  function update_PieChart_04(Run, Sleep) {
+  data_PieChart_04.setValue(0, 1, Run); // 
+  data_PieChart_04.setValue(1, 1, Sleep); // 
+  var Error = 24-(Run+Sleep);
+  data_PieChart_04.setValue(2, 1, Error); // 
+  chart_PieChart_04.draw(data_PieChart_04, options_PieChart_04); // Redraw the chart with updated data
+  }
+  // CV107
+  function update_PieChart_05(Run, Sleep) {
+  data_PieChart_05.setValue(0, 1, Run); // 
+  data_PieChart_05.setValue(1, 1, Sleep); // 
+  var Error = 24-(Run+Sleep);
+  data_PieChart_05.setValue(2, 1, Error); // 
+  chart_PieChart_05.draw(data_PieChart_05, options_PieChart_05); // Redraw the chart with updated data
+  }
 /*-----------------------------FUNCTION- Update Line Chart------------------------------------*/
     function appendData_LineChart_01(CV103, CV104, CV105, CV106, CV107) {
       const now = new Date();
@@ -346,14 +456,6 @@
       // Redraw the chart with the updated data
       chart_LineChart_01.draw(data_LineChart_01, options_LineChart_01);
       chart_LineChart_01.draw(view_LineChart_01, options_LineChart_01);
-    }
-  /*-----------------------------FUNCTION- Update Pie Chart------------------------------------*/
-    function update_PieChart_01(CV103, CV104, CV105) {
-      data_PieChart_01.setValue(0, 1, CV103); // 
-      data_PieChart_01.setValue(1, 1, CV104); // 
-      data_PieChart_01.setValue(2, 1, CV105); // 
-      chart_PieChart_01.draw(data_PieChart_01, options_PieChart_01); // Redraw the chart with updated data
-      chart_PieChart_02.draw(data_PieChart_01, options_PieChart_02); // Redraw the chart with updated data
     }
   /*-----------------------------FUNCTION- Update Column Chart-01------------------------------------*/
     function update_ColumnChart_01( CV103_Tint, CV103_275, CV103_370, CV103_375, CV103_380,
@@ -374,7 +476,7 @@
       }    
       chart_ColumnChart_01.draw(data_ColumnChart_01, options_ColumnChart_01); // Redraw the chart with updated data
     }
-  /*-----------------------------FUNCTION- Update Column Chart-01------------------------------------*/
+  /*-----------------------------FUNCTION- Update Column Chart-02------------------------------------*/
     function update_ColumnChart_02( CV103_TimeRun, CV103_TimeSleep, CV103_TimeError,
                                     CV104_TimeRun, CV104_TimeSleep, CV104_TimeError,
                                     CV105_TimeRun, CV105_TimeSleep, CV105_TimeError,
@@ -386,12 +488,11 @@
       data_ColumnChart_02.setValue(3, 1, CV106_TimeRun); data_ColumnChart_02.setValue(3, 2, CV106_TimeSleep);data_ColumnChart_02.setValue(3, 3, CV106_TimeError);  
       data_ColumnChart_02.setValue(4, 1, CV107_TimeRun); data_ColumnChart_02.setValue(4, 2, CV107_TimeSleep);data_ColumnChart_02.setValue(4, 3, CV107_TimeError); 
       // Calculate totals for annotations
-      //for (let i = 0; i < data_ColumnChart_02.getNumberOfRows(); i++) {
-      //  const total = data_ColumnChart_02.getValue(i, 1) + data_ColumnChart_02.getValue(i, 2) + data_ColumnChart_02.getValue(i, 3);
-      //  data_ColumnChart_02.setValue(i, 4, total.toString()); // Set total as annotation
-      //}    
+      for (let i = 0; i < data_ColumnChart_02.getNumberOfRows(); i++) {
+        const total = data_ColumnChart_02.getValue(i, 1) + data_ColumnChart_02.getValue(i, 2) + data_ColumnChart_02.getValue(i, 3);
+        data_ColumnChart_02.setValue(i, 4, total.toString()); // Set total as annotation
+      }  
       chart_ColumnChart_02.draw(data_ColumnChart_02, options_ColumnChart_02); // Redraw the chart with updated data
-      //chart_ColumnChart_02.draw(view_ColumnChart_02, options_ColumnChart_02);
     }
 /*-----------------------------Utility Function------------------------------------*/
     // Function to format the current time as HH:MM:SS
@@ -499,42 +600,50 @@
           C7_nFb_Total_375  = configuration.realtime_configs[33]; // 
           C7_nFb_Total_380  = configuration.realtime_configs[34]; // 
           // Total Time 
-          C3_nFb_Total_TimeRun    = configuration.realtime_configs[35]; // 
-          C3_nFb_Total_TimeSleep  = configuration.realtime_configs[36]; // 
-          C3_nFb_Total_TimeError  = configuration.realtime_configs[37]; //  
-          C4_nFb_Total_TimeRun    = configuration.realtime_configs[38]; // 
-          C4_nFb_Total_TimeSleep  = configuration.realtime_configs[39]; // 
-          C4_nFb_Total_TimeError  = configuration.realtime_configs[40]; //  
-          C5_nFb_Total_TimeRun    = configuration.realtime_configs[41]; // 
-          C5_nFb_Total_TimeSleep  = configuration.realtime_configs[42]; // 
-          C5_nFb_Total_TimeError  = configuration.realtime_configs[43]; //  
-          C6_nFb_Total_TimeRun    = configuration.realtime_configs[44]; // 
-          C6_nFb_Total_TimeSleep  = configuration.realtime_configs[45]; // 
-          C6_nFb_Total_TimeError  = configuration.realtime_configs[46]; //  
-          C7_nFb_Total_TimeRun    = configuration.realtime_configs[47]; // 
-          C7_nFb_Total_TimeSleep  = configuration.realtime_configs[48]; // 
+          C3_nFb_Total_TimeRun     = configuration.realtime_configs[35]; // 
+          C4_nFb_Total_TimeRun     = configuration.realtime_configs[36]; // 
+          C5_nFb_Total_TimeRun     = configuration.realtime_configs[37]; //  
+          C6_nFb_Total_TimeRun     = configuration.realtime_configs[38]; // 
+          C7_nFb_Total_TimeRun     = configuration.realtime_configs[39]; // 
+          C3_nFb_Total_TimeSleep   = configuration.realtime_configs[40]; //  
+          C4_nFb_Total_TimeSleep   = configuration.realtime_configs[41]; // 
+          C5_nFb_Total_TimeSleep   = configuration.realtime_configs[42]; // 
+          C6_nFb_Total_TimeSleep   = configuration.realtime_configs[43]; //  
+          C7_nFb_Total_TimeSleep   = configuration.realtime_configs[44]; // 
+          C3_nFb_Total_TimeError  = configuration.realtime_configs[45]; // 
+          C4_nFb_Total_TimeError  = configuration.realtime_configs[46]; //  
+          C5_nFb_Total_TimeError  = configuration.realtime_configs[47]; // 
+          C6_nFb_Total_TimeError  = configuration.realtime_configs[48]; // 
           C7_nFb_Total_TimeError  = configuration.realtime_configs[49]; //  
         },
         // Update the chart with new values
         onValues: (values) => {
-          //
+          // Update the chart with new values
+          update_PieChart_01( values[C3_nFb_Total_TimeRun.id].value, values[C3_nFb_Total_TimeSleep.id].value);
+          update_PieChart_02( values[C4_nFb_Total_TimeRun.id].value, values[C4_nFb_Total_TimeSleep.id].value);
+          update_PieChart_03( values[C5_nFb_Total_TimeRun.id].value, values[C5_nFb_Total_TimeSleep.id].value);
+          update_PieChart_04( values[C6_nFb_Total_TimeRun.id].value, values[C6_nFb_Total_TimeSleep.id].value);
+          update_PieChart_05( values[C7_nFb_Total_TimeRun.id].value, values[C7_nFb_Total_TimeSleep.id].value);
+          // Pail Rate
           appendData_LineChart_01(  values[C3_nFb_PailRate.id].value,
                                     values[C4_nFb_PailRate.id].value, 
                                     values[C5_nFb_PailRate.id].value, 
                                     values[C6_nFb_PailRate.id].value, 
                                     values[C7_nFb_PailRate.id].value);
-          // Update the chart with new values
-          update_PieChart_01( values[C3_nFb_PailType.id].value,
-                              values[C4_nFb_PailType.id].value, 
-                              values[C5_nFb_PailType.id].value);
-          //
+          // Total Product
           update_ColumnChart_01(values[C3_nFb_Total_Tint.id].value, values[C3_nFb_Total_275.id].value,values[C3_nFb_Total_370.id].value,values[C3_nFb_Total_375.id].value, values[C3_nFb_Total_380.id].value,
                                 values[C4_nFb_Total_Tint.id].value, values[C4_nFb_Total_275.id].value,values[C4_nFb_Total_370.id].value,values[C4_nFb_Total_375.id].value, values[C4_nFb_Total_380.id].value,
                                 values[C5_nFb_Total_Tint.id].value, values[C5_nFb_Total_275.id].value,values[C5_nFb_Total_370.id].value,values[C5_nFb_Total_375.id].value, values[C5_nFb_Total_380.id].value,
                                 values[C6_nFb_Total_Tint.id].value, values[C6_nFb_Total_275.id].value,values[C6_nFb_Total_370.id].value,values[C6_nFb_Total_375.id].value, values[C6_nFb_Total_380.id].value,
                                 values[C7_nFb_Total_Tint.id].value, values[C7_nFb_Total_275.id].value,values[C7_nFb_Total_370.id].value,values[C7_nFb_Total_375.id].value, values[C7_nFb_Total_380.id].value
           );
-          
+          // Total Time
+          update_ColumnChart_02(values[C3_nFb_Total_TimeRun.id].value, values[C3_nFb_Total_TimeSleep.id].value,values[C3_nFb_Total_TimeError.id].value,
+                                values[C4_nFb_Total_TimeRun.id].value, values[C4_nFb_Total_TimeSleep.id].value,values[C4_nFb_Total_TimeError.id].value,
+                                values[C5_nFb_Total_TimeRun.id].value, values[C5_nFb_Total_TimeSleep.id].value,values[C5_nFb_Total_TimeError.id].value,
+                                values[C6_nFb_Total_TimeRun.id].value, values[C6_nFb_Total_TimeSleep.id].value,values[C6_nFb_Total_TimeError.id].value,
+                                values[C7_nFb_Total_TimeRun.id].value, values[C7_nFb_Total_TimeSleep.id].value,values[C7_nFb_Total_TimeError.id].value
+          );
         },
       });
     </script>

@@ -15,49 +15,47 @@
       height: 100vh;
       margin: 0;
       padding: 0;
-      background-color: cornflowerblue;
+      background-color: rgb(255, 255, 255);
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
-    .container{
-      margin: 0;
+   
+    .Chart{
+      height: 350px; 
       padding: 0;
-      background-color: aqua;
-      justify-content: space-around;
-      width: 100%;
-      object-fit: cover;
+      align-items: center;
     }
   </style>
 </head>
 
 <body>
-  <div class="col-12 container">
-    <div id="carouselExampleIndicators" class="col-12 carousel carousel-dark slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active container parent">
-          <div id="id_PieChart_01"></div>
+  <div class="container-fluid" style="padding: 0;">
+    <div id="carouselExampleIndicators" style="height: 350px; padding: 0;" class="col-12 carousel slide">
+      <div class="carousel-inner" style="height: 350px; padding: 0; align-items: center;">
+        <div class="carousel-item active">
+          <div class="Chart" id="id_PieChart_01"></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_02" ></div>
+          <div class="Chart" id="id_PieChart_02" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_03" ></div>
+          <div class="Chart" id="id_PieChart_03" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_04" ></div>
+          <div class="Chart" id="id_PieChart_04" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_PieChart_05" ></div>
+          <div class="Chart" id="id_PieChart_05" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_LineChart_01" ></div>
+          <div class="Chart" id="id_LineChart_01" ></div>
         </div>
         <div class="carousel-item">
-          <div id="id_ColumnChart_01"></div>
+          <div class="Chart" id="id_ColumnChart_01"></div>
         </div>
         <div class="carousel-item">
-          <div id="id_ColumnChart_02"></div>
+          <div class="Chart" id="id_ColumnChart_02"></div>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -506,6 +504,7 @@
     <!--------------------------------- GET DATA FROM ERA ---------------------------->   
     <script>
       const eraWidget = new EraWidget();
+      eraWidget.requestAdjustMobileHeight(500);
       // Khai báo các tag sử dụng    
       let C3_nFb_PailType   = null,
           C4_nFb_PailType   = null,
