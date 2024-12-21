@@ -22,17 +22,19 @@
     }
    
     .Chart{
-      height: 350px; 
+      height: 300px; 
       padding: 0;
+      background-color: aqua;
+      width: 100%;
       align-items: center;
     }
   </style>
 </head>
 
 <body>
-  <div class="container-fluid" style="padding: 0;">
-    <div id="carouselExampleIndicators" style="height: 350px; padding: 0;" class="col-12 carousel slide">
-      <div class="carousel-inner" style="height: 350px; padding: 0; align-items: center;">
+  <div class="container-fluid" style="padding: 0; align-items: center; justify-content: center;">
+    <div id="carouselExampleIndicators" style="height: 300px; padding: 0;" class="col-12 carousel carousel-dark slide">
+      <div class="carousel-inner" style="height: 300px; padding: 0; align-items: center;">
         <div class="carousel-item active">
           <div class="Chart" id="id_PieChart_01"></div>
         </div>
@@ -92,32 +94,86 @@
     // CV103
     const options_PieChart_01 = {
       title: 'CV103-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 10,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };
     // CV104
     const options_PieChart_02 = {
       title: 'CV104-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 10,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };
     // CV105
     const options_PieChart_03 = {
       title: 'CV105-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 10,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };    
     // CV106
     const options_PieChart_04 = {
       title: 'CV106-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 10,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
       //pieHole: 0.4
     };
     // CV107
     const options_PieChart_05 = {
       title: 'CV107-Total Time (Hour)',
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 10,
+        top: 20,
+        width: '110%',
+        height: '80%'
+      },
       is3D: true
-      //pieHole: 0.4
     };
     // Line Chart   
     const options_LineChart_01 = {
@@ -128,6 +184,17 @@
         viewWindow: {
           min: 0
         }
+      },
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
+      },
+      chartArea: {
+        left: 30,
+        top: 20,
+        width: '96%',
+        height: '80%'
       }
     }; 
     // Column Chart               
@@ -151,6 +218,11 @@
           bold: true,
           color: '#000',
         },
+      },
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
       }
     };  
     // Option
@@ -171,6 +243,11 @@
           bold: true,
           color: '#000',
         },
+      },
+      titleTextStyle: {
+        fontSize: 16,
+        color: '#333',
+        bold: true
       }
   };  
     // Initialize the Line Chart
