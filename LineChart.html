@@ -28,5 +28,47 @@
         chart_BarChart_01.draw(data_BarChart_01, options_BarChart_01);
       }
     </script>
+    <div id="chart_div" style="width: 800px; height: 400px;"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+    
+      function drawChart() {
+        // Data initialization
+        const data = new google.visualization.DataTable();
+        data.addColumn("string", "Category");
+        data.addColumn("number", "Value");
+        data.addColumn({ type: "string", role: "style" }); // Add a style role column
+    
+        // Add initial data
+        data.addRows([
+          ["A", 100, "blue"], // Blue column
+          ["B", 200, "green"], // Green column
+          ["C", 300, "orange"], // Orange column
+        ]);
+    
+        const options = {
+          title: "Dynamic Column Colors",
+          hAxis: { title: "Category" },
+          vAxis: { title: "Value", minValue: 0, maxValue: 400 },
+          legend: "none",
+        };
+    
+        const chart = new google.visualization.ColumnChart(
+          document.getElementById("chart_div")
+        );
+    
+        chart.draw(data, options);
+    
+        // Dynamically update column colors based on some logic
+        setTimeout(() => {
+          data.setValue(0, 2, "red"); // Change first column to red
+          data.setValue(1, 2, "purple"); // Change second column to purple
+          data.setValue(2, 2, "cyan"); // Change third column to cyan
+          chart.draw(data, options); // Redraw chart with updated colors
+        }, 2000); // Wait for 2 seconds before updating
+      }
+    </script>    
   </body>
 </html>
