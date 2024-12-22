@@ -11,7 +11,7 @@
       function draw_BarChart_01() {
         data_BarChart_01 = google.visualization.arrayToDataTable([
           ['', '',{ role: "annotation" }],
-          ['Pail Per Min', 300,'Pail']
+          ['Pail Per Min', 300,'500']
         ]);
 
         const options_BarChart_01 = {
@@ -24,7 +24,7 @@
           },
           vAxis: { textPosition: "none", gridlines: { color: "transparent" } }
         };
-        chart_BarChart_01 = new google.visualization.ColumnChart(document.getElementById('id_BarChart_01'));
+        chart_BarChart_01 = new google.visualization.BarChart(document.getElementById('id_BarChart_01'));
         chart_BarChart_01.draw(data_BarChart_01, options_BarChart_01);
       }
     </script>

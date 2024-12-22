@@ -43,14 +43,15 @@
         <div class="carousel-item active ">
           <div class="container-fluid parent" >
             <div class="row text-center" style="background-color: rgb(255, 255, 255);">
-              <div class="col-7 themed-grid-col Chart" id="id_PieChart_01" style="background-color: rgb(255, 255, 255);"></div>
+              <div class="col-7 themed-grid-col Chart" id="id_PieChart_01" style="background-color: rgb(238, 3, 3);"></div>
               <div class="col-5 themed-grid-col" id="id_C3_StatusCard" style="align-items: center;" >
                 <div class="col">
-                  <div class="card mb-4 rounded-1 shadow-sm border-primary">
-                    <div class="card-header py-1 text-bg-primary border-primary" id="id_C3_nFb_PailType">
-                      <h4 class="my-0 fw-normal">Tint/Dalmec</h4>
+                  <div class="card mb-4 rounded-1 shadow-sm border-primary" style="height: 200px;">
+                    <div class="card-header py-1 text-bg-primary border-primary" id="id_C3_nFb_PailType" style="background-color:'#0937E6' !important;">
+                      <h4 class="my-0 fw-normal" style=" font-size: 12pt; ">Tint/Dalmec</h4>
                     </div>
                     <div class="card-body">
+                      <span class="badge d-flex align-items-top p-1 pe-1" id="id_BarChart_01" style="height: 25px;" ></span>
                       <span class="badge d-flex align-items-center p-1 pe-2 text-success-emphasis bg-danger-subtle border border-success-subtle rounded-pill" id="id_C3_bFb_Error"
                                     >
                         <img class="rounded-circle me-3" width="30" height="30" src="./assets/img/warning.png" alt="" >
@@ -110,12 +111,12 @@
   function FC_ChangeColorNormal(Fb_Input,Element_Id) {
     let _Element = document.getElementById(Element_Id);
     if (Fb_Input > 0) {
-      _Element.style.cssText = 'background-color: #ff2d55 !important;';
+      _Element.style.cssText = 'background-color: #E60937 !important;';
       _Element.innerHTML = 
       `<img class="rounded-circle me-3" width="30" height="30" src="./assets/img/warning.png" alt="">
       <p style="color: aliceblue;margin-bottom: 0rem; height: 35;">Error !</p>`;
     } else {
-      _Element.style.cssText = 'background-color: #07bc0c !important;';
+      _Element.style.cssText = 'background-color: #37E609 !important;';
       _Element.innerHTML = 
       `<img class="rounded-circle me-3" width="30" height="30" src="./assets/img/tick.png" alt="">
       <p style="color: aliceblue;margin-bottom: 0rem; height: 35;">Normal</p>`;
@@ -125,12 +126,12 @@
   function FC_ChangeColorAuto(Fb_Input,Element_Id) {
     const _Element = document.getElementById(Element_Id);
     if (Fb_Input > 0) {
-      _Element.style.cssText = 'background-color: #07bc0c !important;';
+      _Element.style.cssText = 'background-color: #37E609 !important;';
       _Element.innerHTML = 
       `<img class="rounded-circle me-3" width="30" height="30" src="./assets/img/settings.png" alt="">
       <p style="color: aliceblue;margin-bottom: 0rem; height: 35;">Auto</p>`;
     } else {
-      _Element.style.cssText = 'background-color: #faad14 !important;';
+      _Element.style.cssText = 'background-color: #F5AA0A !important;';
       _Element.innerHTML = 
       `<img class="rounded-circle me-3" width="30" height="30" src="./assets/img/gear.png" alt="">
       <p style="color: aliceblue;margin-bottom: 0rem; height: 35;">Manual</p>`;
@@ -140,34 +141,42 @@
   function FC_ChangeColorRun(Fb_Input,Element_Id) {
     const _Element = document.getElementById(Element_Id);
     if (Fb_Input > 0) {
-      _Element.style.cssText = 'background-color: #07bc0c !important;';
+      _Element.style.cssText = 'background-color: #37E609 !important;';
       _Element.innerHTML = 
       `<img class="rounded-circle me-3" width="30" height="30" src="./assets/img/run.png" alt="">
       <p style="color: aliceblue;margin-bottom: 0rem; height: 35;">Running</p>`;
     } else {
-      _Element.style.cssText = 'background-color: #faad14 !important;';
+      _Element.style.cssText = 'background-color: #F5AA0A !important;';
       _Element.innerHTML = 
       `<img class="rounded-circle me-3" width="30" height="30" src="./assets/img/stop.png" alt="">
       <p style="color: aliceblue;margin-bottom: 0rem; height: 35;">Sleeping</p>`;
     }
   }
   // Function change the Pail type
-  
-  //const _Element = document.getElementById('id_C3_nFb_PailType');
-  //_Element.innerHTML ='<h4 class="my-0 fw-normal">380mm/30Pail</h4>';
   function FC_ChangePailName(Fb_Input,Element_Id){
     const _Element = document.getElementById(Element_Id);
     if (Fb_Input == 0) {
-      _Element.innerHTML ='<h4 class="my-0 fw-normal">Tint/Dalmec</h4>';
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">Tint/Dalmec</h4>';
     } else if (Fb_Input == 1){
-      _Element.innerHTML ='<h4 class="my-0 fw-normal">275mm/30Pail</h4>';
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">275mm/30Pail</h4>';
     } else if (Fb_Input == 2){
-      _Element.innerHTML ='<h4 class="my-0 fw-normal">370mm/30Pail</h4>';
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">370mm/30Pail</h4>';
     } else if (Fb_Input == 3){
-      _Element.innerHTML ='<h4 class="my-0 fw-normal">370mm/26Pail</h4>';
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">370mm/26Pail</h4>';
     } else if (Fb_Input == 4){
-      _Element.innerHTML ='<h4 class="my-0 fw-normal">380mm/30Pail</h4>';
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">380mm/30Pail</h4>';
     }
+  }
+  // Function change bar color by pail rate
+  function FC_ChangeBarColor(Fb_Input,Element_Id){
+    const _Element = document.getElementById(Element_Id);
+    if (Fb_Input <= 3) {
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">Tint/Dalmec</h4>';
+    } else if (Fb_Input > 3 && Fb_Input <= 5){
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">275mm/30Pail</h4>';
+    } else if (Fb_Input > 5){
+      _Element.innerHTML ='<h4 class="my-0 fw-normal" style=" font-size: 12pt; ">370mm/30Pail</h4>';
+    } 
   }
   </script>
   <!--------------------------------- Carousel Navigate ---------------------------->   
@@ -178,7 +187,7 @@
   <!-- Piechart -->  
   <script src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['corechart','bar']});
     google.charts.setOnLoadCallback(drawInitialChart);
     // Define data and chart globally
     let data_PieChart_01,chart_PieChart_01,
@@ -189,6 +198,8 @@
     let data_LineChart_01  , chart_LineChart_01   ,view_LineChart_01; 
     let data_ColumnChart_01, chart_ColumnChart_01 ,view_ColumnChart_01;
     let data_ColumnChart_02, chart_ColumnChart_02 ,view_ColumnChart_02;
+    let data_BarChart_01, chart_BarChart_01, view_BarChart_01;
+
     // CV103
     const options_PieChart_01 = {
       title: 'CV103-Total Time (Hour)',
@@ -206,7 +217,8 @@
         //top: 20,
         height: '80%'
       },
-      colors: ['#07bc0c','#faad14', '#ff2d55'],
+      //colors: ['#07bc0c','#faad14', '#ff2d55'],
+      colors: ['#37E609','#0937E6', '#E60937'],
       is3D: true
       //pieHole: 0.4
     };
@@ -368,7 +380,32 @@
         width: '96%',
         height: '70%'
       }
-  };  
+    };  
+    // Bar chart
+    const options_BarChart_01 = {
+      chartArea: {
+        width: '200%',
+        height:'200%',
+        bottom: 0
+      },
+      annotations: {
+        alwaysOutside: false, // Keep annotations inside columns
+        textStyle: {
+          fontSize: 14, // Adjust the font size
+          color: "#000", // Set the color of the text
+          bold: false // Make text bold (optional)
+        }
+      },
+      colors: ['#007aff'],
+      hAxis: {
+        gridlines: { color: 'transparent',count: 5 }, // Hides horizontal gridlines
+        minValue: 0,
+        maxValue: 10,
+        textPosition: 'top' // Hides x-axis labels
+      },
+      //vAxis: { textPosition: "none", gridlines: { count: 5,color: "transparent" }, minValue: 0,maxValue: 20 }
+      
+    };
     // Initialize the Line Chart
     function drawInitialChart() {
       chart_PieChart_01     = new google.visualization.PieChart(document.getElementById('id_PieChart_01'));
@@ -379,12 +416,15 @@
       chart_LineChart_01    = new google.visualization.LineChart(document.getElementById('id_LineChart_01'));
       chart_ColumnChart_01  = new google.visualization.ColumnChart(document.getElementById("id_ColumnChart_01"));
       chart_ColumnChart_02  = new google.visualization.ColumnChart(document.getElementById("id_ColumnChart_02"));
+      chart_BarChart_01     = new google.visualization.BarChart(document.getElementById('id_BarChart_01'));
       //
       draw_PieChart_01(); // Draw the first chart on load
+      draw_BarChart_01();
       //
       document.getElementById('carouselExampleIndicators').addEventListener('slid.bs.carousel', (event) => {
         if (event.relatedTarget.querySelector('#id_PieChart_01')) {
           draw_PieChart_01();
+          draw_BarChart_01();
         } else if (event.relatedTarget.querySelector('#id_PieChart_02')) {
           draw_PieChart_02();
         } else if (event.relatedTarget.querySelector('#id_PieChart_03')) {
@@ -399,7 +439,7 @@
           draw_ColumnChart_01();
         } else if (event.relatedTarget.querySelector('#id_ColumnChart_02')) {
           draw_ColumnChart_02();
-        }
+        } 
       });
       window.addEventListener('resize', () => {
         draw_PieChart_01();
@@ -410,6 +450,7 @@
         draw_LineChart_01();
         draw_ColumnChart_01();
         draw_ColumnChart_02();
+        draw_BarChart_01();
       });
     }
     /*-----------------------------Pie Chart Initialization (Unchanged)-----------------------------*/
@@ -592,6 +633,24 @@
       // draw
       chart_ColumnChart_02.draw(view_ColumnChart_02, options_ColumnChart_02);
     }
+    /*-----------------------------Bar Chart 01------------------------------------*/
+    function draw_BarChart_01() {
+      data_BarChart_01 = google.visualization.arrayToDataTable([
+        ['', '',{ role: "annotation" }],
+        ['Pail Per Min', 20,'Pail']
+      ]);
+      // View Data
+      view_BarChart_01 = new google.visualization.DataView(data_BarChart_01);
+      view_BarChart_01.setColumns([0, 1, {
+          calc: 'stringify',
+          sourceColumn: 1,
+          type: 'string',
+          role: 'annotation'}
+          ]
+      );
+      // Draw
+      chart_BarChart_01.draw(view_BarChart_01, options_BarChart_01);
+    }
 /*-----------------------------FUNCTION- Update Pie Chart -01------------------------------------*/
   // CV103
   function update_PieChart_01(Run, Sleep) {
@@ -688,6 +747,14 @@
       }  
       chart_ColumnChart_02.draw(data_ColumnChart_02, options_ColumnChart_02); // Redraw the chart with updated data
     }
+  /*-----------------------------FUNCTION- Update Column Chart-03------------------------------------*/
+    function update_BarChart_01( CV103_PailRate) {
+      data_BarChart_01.setValue(0, 1, CV103_PailRate); 
+      const total = CV103_PailRate;
+      data_BarChart_01.setValue(0, 2, total.toString()); 
+ 
+      chart_BarChart_01.draw(data_BarChart_01, options_BarChart_01); // Redraw the chart with updated data
+    }  
 /*-----------------------------Utility Function------------------------------------*/
     // Function to format the current time as HH:MM:SS
     function formatTime(date) {
@@ -814,7 +881,7 @@
         
         // Update the chart with new values
         onValues: (values) => {
-          
+          //update_BarChart_01(values[C3_nFb_Total_TimeError.id].value); 
           // Change Pail Name
           FC_ChangePailName(values[C3_nFb_Total_TimeError.id].value,'id_C3_nFb_PailType');
           // Change color
@@ -822,17 +889,19 @@
           FC_ChangeColorAuto(values[C3_nFb_Total_TimeError.id].value,'id_C3_bFb_Auto');
           FC_ChangeColorRun(values[C3_nFb_Total_TimeError.id].value,'id_C3_bFb_Run');
           // Update the chart with new values
-          update_PieChart_01( values[C3_nFb_Total_TimeError.id].value, values[C3_nFb_Total_TimeSleep.id].value);
+          //update_PieChart_01( values[C3_nFb_Total_TimeRun.id].value, values[C3_nFb_Total_TimeSleep.id].value);
           update_PieChart_02( values[C4_nFb_Total_TimeRun.id].value, values[C4_nFb_Total_TimeSleep.id].value);
           update_PieChart_03( values[C5_nFb_Total_TimeRun.id].value, values[C5_nFb_Total_TimeSleep.id].value);
           update_PieChart_04( values[C6_nFb_Total_TimeRun.id].value, values[C6_nFb_Total_TimeSleep.id].value);
           update_PieChart_05( values[C7_nFb_Total_TimeRun.id].value, values[C7_nFb_Total_TimeSleep.id].value);
           // Pail Rate
+           
           appendData_LineChart_01(  values[C3_nFb_PailRate.id].value,
                                     values[C4_nFb_PailRate.id].value, 
                                     values[C5_nFb_PailRate.id].value, 
                                     values[C6_nFb_PailRate.id].value, 
                                     values[C7_nFb_PailRate.id].value);
+                                
           // Total Product
           update_ColumnChart_01(values[C3_nFb_Total_Tint.id].value, values[C3_nFb_Total_275.id].value,values[C3_nFb_Total_370.id].value,values[C3_nFb_Total_375.id].value, values[C3_nFb_Total_380.id].value,
                                 values[C4_nFb_Total_Tint.id].value, values[C4_nFb_Total_275.id].value,values[C4_nFb_Total_370.id].value,values[C4_nFb_Total_375.id].value, values[C4_nFb_Total_380.id].value,
@@ -851,12 +920,15 @@
       });
 
       // Simulating variable change
-      //setInterval(() => {
-        //variable1 = Math.floor(Math.random() * 2); // Random value between 0 and 14
+      setInterval(() => {
+       let variable1 = Math.floor(Math.random() * 15); // Random value between 0 and 14
         //console.log('Variable1:', variable1);
         //variable1 = !variable1;
         //changeColor(variable1);
-      //}, 2000); // Change value every 2 seconds
+        const RunTime = 24 - variable1;
+        update_PieChart_01(variable1,RunTime);
+        update_BarChart_01(variable1);
+      }, 2000); // Change value every 2 seconds
     </script>
 </body>
 </html>
