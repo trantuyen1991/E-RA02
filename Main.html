@@ -767,7 +767,6 @@
     <!--------------------------------- GET DATA FROM ERA ---------------------------->   
     <script>
       const eraWidget = new EraWidget();
-      eraWidget.requestAdjustMobileHeight(100);
       // Khai báo các tag sử dụng    
       let C3_nFb_PailType   = null,
           C4_nFb_PailType   = null,
@@ -817,6 +816,7 @@
       //
       const maxRows = 1000; // Limit the number of rows in the data table    
       eraWidget.init({
+        mobileHeight:500,
         // Lưu các cấu hình khi nhận được từ widget
         onConfiguration: (configuration) => {
           // Pail Type
